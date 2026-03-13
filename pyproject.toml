@@ -1,0 +1,70 @@
+[project]
+name = "devliverepl"
+version = "0.2.0"
+description = "Self-sufficient debugging REPL for running Python programs"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "devliverepl contributors"}
+]
+license = {text = "MIT"}
+keywords = ["debugging", "repl", "ptpython", "telnet", "live-debugging", "inspector", "developer-tools"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Debuggers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Logging",
+    "Topic :: System :: Systems Administration",
+]
+
+dependencies = [
+    "ptpython>=3.0.0",
+    "prompt-toolkit>=3.0.0",
+]
+
+[project.optional-dependencies]
+debuggers = [
+    "pudb>=2022.1",
+    "ipdb>=0.13.0",
+    "pdbpp>=0.10.0",
+    "web-pdb>=0.5.0",
+]
+
+dev = [
+    "devliverepl[debuggers]",
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "mypy>=1.0",
+    "ruff>=0.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/devliverepl/devliverepl"
+Documentation = "https://github.com/devliverepl/devliverepl#readme"
+Issues = "https://github.com/devliverepl/devliverepl/issues"
+Changelog = "https://github.com/devliverepl/devliverepl/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
