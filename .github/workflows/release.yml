@@ -31,7 +31,7 @@ jobs:
 
       - name: Build package
         run: |
-          uv build --release  # This creates both wheel and sdist
+          uv build  # This creates both wheel and sdist
 
       - name: Check package with twine
         run: |
